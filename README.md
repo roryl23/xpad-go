@@ -2,15 +2,46 @@
 
 Go bindings for the Linux kernel `xpad` driver (evdev, joystick, sysfs).
 
-Linux only.
+## Support
 
-Features:
-- Device discovery and open/close helpers for `/dev/input/event*`
-- Mapping to `/dev/input/js*` and `/sys/class/leds/xpad*`
-- evdev metadata, capability queries, and event I/O
-- Force-feedback rumble upload/play/erase
-- LED control via sysfs brightness
-- Module parameter read/write helpers
+- Linux only (uses evdev, sysfs, and ioctl APIs).
+- Xbox 360 controller only (this is the only device tested/supported today).
+- PRs welcome for broader controller support and other platforms.
+
+## Install the xpad driver (Linux)
+
+The `xpad` driver ships with the Linux kernel. In most distros it is already
+available as a loadable kernel module.
+
+1. Plug in the Xbox 360 controller (USB or wireless receiver).
+2. Load the module if it is not already loaded:
+
+```bash
+sudo modprobe xpad
+```
+
+3. Verify the devices are present:
+
+```bash
+ls -l /dev/input/event*
+ls -l /dev/input/js*
+ls -l /sys/class/leds/xpad*
+```
+
+If you do not see the devices, confirm the kernel module is loaded:
+
+```bash
+lsmod | grep xpad
+```
+
+Permissions: reading `/dev/input/*` and writing to `/sys/class/leds/*` typically
+require elevated privileges or a udev rule that grants your user access.
+
+## Install the Go library
+
+```bash
+go get github.com/roryl23/xpad-go
+```
 
 ## Quick start
 
@@ -84,3 +115,15 @@ if err != nil {
 }
 _ = evt
 ```
+
+## Tests
+
+The integration tests require a controller connected on Linux.
+If one is not present, the tests that require it will be skipped.
+
+```bash
+XPAD_INTERACTIVE=1 go test -run TestIntegrationControllerButtons -v
+```
+
+Use `XPAD_EVENT_PATH` or `XPAD_JOYSTICK_PATH` to point tests at a specific
+controller if discovery fails.
