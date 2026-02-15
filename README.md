@@ -8,6 +8,12 @@ Go bindings for the Linux kernel `xpad` driver (evdev, joystick, sysfs).
 - Xbox 360 controller only (this is the only device tested/supported today).
 - PRs welcome for broader controller support and other platforms.
 
+Let me reiterate and clarify; This software was written in an afternoon and covers a single use case.
+Use at your own risk. If you have a problem feel free to open an issue, and I may get to it in my free time.
+
+Basically under no circumstances will I be adding support for other operating systems or controllers myself.
+If you need other platforms implemented, be the change you want to see in the world and open a PR!
+
 ## Install the xpad driver (Linux)
 
 The `xpad` driver ships with the Linux kernel. In most distros it is already
