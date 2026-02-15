@@ -132,3 +132,7 @@ XPAD_INTERACTIVE=1 go test -run TestIntegrationControllerButtons -v
 
 Use `XPAD_EVENT_PATH` or `XPAD_JOYSTICK_PATH` to point tests at a specific
 controller if discovery fails.
+
+## Resources
+
+- Linux Kernel driver: https://github.com/paroj/xpad
