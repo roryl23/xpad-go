@@ -11,7 +11,7 @@ Let me reiterate and clarify; This software was written in an afternoon and bare
 that is, button presses on the Xbox 360 controller.
 Use at your own risk. If you have a problem feel free to open an issue, and I may get to it in my free time.
 
-Basically, under no circumstances will I be adding support for other use cases myself.
+Basically, under no circumstances can I be expected to add support for other use cases.
 If you need something implemented, be the change you want to see in the world and open a PR!
 
 ## Install the xpad driver (Linux)
